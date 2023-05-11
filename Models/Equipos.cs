@@ -1,6 +1,6 @@
  public static class Equipos()
     {
-        public List<string> ListaEquipos = new List<string>();
+        List<string> ListaEquipos = new List {get; private set;}
         public List<string> ListaMedios = new List<string>();
         public List<string> ListaPantalones = new List<string>();
         public List<string> ListaRemeras = new List<string>();
