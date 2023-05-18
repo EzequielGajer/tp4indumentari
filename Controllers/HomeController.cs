@@ -15,17 +15,43 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.EquiposIndumentaria = Equipos.EquiposIndumentaria;
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult SelectIndumentaria()
     {
+        ViewBag.ListaEquipos = Equipos.ListaEquipos;
+        ViewBag.ListaMedias = Equipos.ListaMedias;
+        ViewBag.ListaPantalones = Equipos.ListaPantalones;
+        ViewBag.ListaRemeras = Equipos.ListaRemeras;
         return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult GuardarIndumentaria(string equipoSeleccionado, string media, string pantalon, string remera, Indumentaria indumentaria)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        if (string.IsNullOrEmpty(equipoSeleccionado) || string.IsNullOrEmpty(media) || string.IsNullOrEmpty(pantalon) || string.IsNullOrEmpty(remera))
+        {
+            ViewBag.ErrorMensaje = "Los parámetros no son correctos";
+            ViewBag.ListaEquipos = Equipos.ListaEquipos;
+            ViewBag.ListaMedias = Equipos.ListaMedias;
+            ViewBag.ListaPantalones = Equipos.ListaPantalones;
+            ViewBag.ListaRemeras = Equipos.ListaRemeras;
+            return View();
+        }
+
+     if (Equipos.IngresarIndumentaria(equipoSeleccionado, indumentaria))
+        {
+            ViewBag.ErrorMessage = "El equipo ya ha cargado su indumentaria";
+            ViewBag.ListaEquipos = Equipos.ListaEquipos;
+            ViewBag.ListaMedias = Equipos.ListaMedias;
+            ViewBag.ListaPantalones = Equipos.ListaPantalones;
+            ViewBag.ListaRemeras = Equipos.ListaRemeras;
+            return View();
+        }
+
+        ViewBag.EquiposIndumentaria = Equipos.EquiposIndumentaria;
+        return View();
     }
 }
