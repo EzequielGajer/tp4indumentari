@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "SelectIndumentaria";
+}
+
+<h1>Crear Indumentaria</h1>
+
+<form asp-controller="Home" asp-action="GuardarIndumentaria" method="post">
+    <div>
+        <label for="equipo">Equipo:</label>
+        <select id="equipo" name="equipo">
+            @for (var i = 0; i < ViewBag.ListaEquipos.Count; i++)
+            {
+                <option value="@i">@ViewBag.ListaEquipos[i]</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label for="media">Medias:</label>
+        
+        @for (var i = 0; i < ViewBag.ListaMedias.Count; i++)
+        {
+            <div class="medias">
+                <img src="~/imagenes/@ViewBag.ListaMedias[i]" alt="Medias">
+                <input type="radio" id="media" name="media" value="@i">
+            </div>
+        }
+    </div>
+
+    <div>
+        <label for="pantalon">Pantalón:</label>
+        @for (var i = 0; i < ViewBag.ListaPantalones.Count; i++)
+        {
+            <div>
+                <img src="~/imagenes/@ViewBag.ListaPantalones[i]" alt="Pantalón">
+                <input type="radio" id="pantalon" name="pantalon" value="@i">
+            </div>
+        }
+    </div>
+
+    <div>
+        <label for="remera">Remera:</label>
+        @for (var i = 0; i < ViewBag.ListaRemeras.Count; i++)
+        {
+            <div>
+                <img src="~/imagenes/@ViewBag.ListaRemeras[i]" alt="Remera">
+                <input type="radio" id="remera" name="remera" value="@i">
+            </div>
+        }
+    </div>
+
+    <input type="submit" value="Guardar">
+</form>
+
+<style>
+
+form {
+
+    border: 2px #000000 solid;
+}
+ 
+ 
+</style>

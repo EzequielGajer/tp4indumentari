@@ -2,9 +2,17 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h2>Holaaa</h2>
+    <h1 class="display-4">Bienvenidos</h1>
+    <p><a href="@Url.Action("SelectIndumentaria", "home")">Crear Indumentaria</a></p>
 </div>
 
-<input type="number">
+
+@foreach (string equipo in ViewBag.EquiposIndumentaria.Keys)
+{
+    <p>@equipo</p>
+    <img src="@ViewBag.EquiposIndumentaria[equipo].Media">
+    <img scr="@ViewBag.EquiposIndumentaria[equipo].Pantalones">
+    <img scr="@ViewBag.EquiposIndumentaria[equipo].Camiseta">
+}
