@@ -5,7 +5,7 @@
 <h1>Crear Indumentaria</h1>
 
 <form asp-controller="Home" asp-action="GuardarIndumentaria" method="post">
-    <div>
+    <div class="equipos-menu">
         <label for="equipo">Equipo:</label>
         <select id="equipo" name="equipo">
             @for (var i = 0; i < ViewBag.ListaEquipos.Count; i++)
@@ -15,8 +15,9 @@
         </select>
     </div>
 
-    <div>
-        <label for="media">Medias:</label>
+    <p>Medias</p>
+    <div class="div-medias">
+        
         
         @for (var i = 0; i < ViewBag.ListaMedias.Count; i++)
         {
@@ -27,22 +28,25 @@
         }
     </div>
 
-    <div>
-        <label for="pantalon">Pantalón:</label>
+    <p>Pantalones</p>
+    <div class="div-pantalones">
+        
         @for (var i = 0; i < ViewBag.ListaPantalones.Count; i++)
         {
-            <div>
+            <div class="pantalones">
                 <img src="~/imagenes/@ViewBag.ListaPantalones[i]" alt="Pantalón">
                 <input type="radio" id="pantalon" name="pantalon" value="@i">
             </div>
         }
     </div>
 
-    <div>
-        <label for="remera">Remera:</label>
+    
+    <p>Remeras</p>
+    <div class="div-remeras">
+        
         @for (var i = 0; i < ViewBag.ListaRemeras.Count; i++)
         {
-            <div>
+            <div class="remeras">
                 <img src="~/imagenes/@ViewBag.ListaRemeras[i]" alt="Remera">
                 <input type="radio" id="remera" name="remera" value="@i">
             </div>
@@ -54,10 +58,80 @@
 
 <style>
 
-form {
 
-    border: 2px #000000 solid;
+
+.equipos-menu {
+    text-align: center;
 }
+
+
+h1 {
+    text-align: center;
+}
+
+.remeras {
+    display: inline-block;
+    box-shadow: 2px 2px 10px black;
+    margin: 50px;
+    margin-left: 200px;
+    transition: 0.6s;
+}
+
+.remeras img {
+    margin-left: 55px;
+}
+
+
+.pantalones {
+    display: inline-block;
+    box-shadow: 2px 2px 10px black;
+    margin: 50px;
+    margin-left: 200px;
+    transition: 0.6s;
+}
+
+.pantalones img {
+    margin-left: 55px;
+}
+
+
+.medias {
+    display: inline-block;
+    box-shadow: 2px 2px 10px black;
+    margin: 50px;
+    margin-left: 200px;
+    transition: 0.6s;
+}
+
+.medias img {
+    margin-left: 55px;
+    
+}
+
+.medias:hover {
+    transform: translateY(-10px);
+}
+
+.pantalones:hover {
+    transform: translateY(-10px);
+}
+
+.remeras:hover {
+    transform: translateY(-10px);
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+    margin: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+
+
+
  
  
 </style>
